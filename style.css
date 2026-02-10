@@ -1,0 +1,239 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #000;
+  color: #f5f5f5;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#app {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Start overlay */
+#overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, #111 0, #000 60%);
+  z-index: 10;
+}
+
+#overlay h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+#overlay .hint {
+  color: #aaa;
+  margin-bottom: 1.2rem;
+}
+
+button {
+  padding: 0.45rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid #f97316;
+  background: #111;
+  color: #f97316;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+button:hover {
+  background: #f97316;
+  color: #111;
+}
+
+/* Text block */
+#textContainer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#textBlock {
+  max-width: 650px;
+  padding: 1.5rem 2rem;
+  border: 1px solid #333;
+  background: #050505;
+  font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 14px;
+  line-height: 1.25;
+  white-space: pre-wrap;
+}
+
+/* Each character as span */
+.letter {
+  display: inline-block;
+  position: relative;
+  transition:
+    color 0.5s ease-out,
+    text-shadow 0.5s ease-out,
+    opacity 1s ease-out,
+    transform 1s ease-out,
+    filter 1s ease-out;
+}
+
+@keyframes flicker {
+  0% {
+    text-shadow: 0 0 3px #f97316, 0 0 6px #dc2626;
+    transform: translateY(-0.5px);
+  }
+  50% {
+    text-shadow: 0 0 6px #fbbf24, 0 0 10px #f97316;
+    transform: translateY(-1.5px);
+  }
+  100% {
+    text-shadow: 0 0 4px #f97316, 0 0 8px #b91c1c;
+    transform: translateY(-1px);
+  }
+}
+
+.whitespace {
+  white-space: pre-wrap;
+}
+
+/* Burning state */
+.letter.burning {
+  color: #f97316;
+  animation: flicker 0.25s infinite alternate;
+}
+
+.letter.burning::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 6px;
+  background: #fbbf24;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  opacity: 0.8;
+  pointer-events: none;
+  animation: spark 0.4s ease-out forwards;
+}
+
+@keyframes spark {
+  0% {
+    transform: translate(-50%, 0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -12px);
+    opacity: 0;
+  }
+}
+
+/* Burned → fade out */
+.letter.burned {
+  color: #000;
+  text-shadow: none;
+  opacity: 0;
+  transform: translateY(8px) rotate(2deg) scale(0.9);
+  filter: blur(1px);
+  transition:
+    opacity 0.9s ease-out,
+    transform 0.9s ease-out,
+    filter 0.9s ease-out;
+}
+
+.letter.burned::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(40, 20, 10, 0.5);
+  filter: blur(2px);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Ending / Borges section */
+#ending {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(0,0,0,0.8), rgba(0,0,0,0.98));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  opacity: 0;
+  transition: opacity 1.4s ease-out;
+  pointer-events: none;
+}
+
+#ending.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.ending-inner {
+  text-align: center;
+  max-width: 640px;
+  padding: 1.5rem;
+}
+
+#borgesText {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  white-space: pre-wrap;
+}
+
+.signature {
+  margin-bottom: 1.4rem;
+  color: #d4d4d4;
+  font-style: italic;
+}
+
+.hidden {
+  display: none;
+}
+
+#heatLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle at 50% 30%, rgba(255,255,255,0.05), transparent 55%);
+  mix-blend-mode: screen;
+  animation: heatWave 0.4s infinite alternate;
+  transition: opacity 0.6s ease-out;
+  z-index: 5;
+}
+
+.heat-hidden {
+  opacity: 0;
+}
+
+.heat-visible {
+  opacity: 1;
+}
+
+@keyframes heatWave {
+  0% {
+    transform: translateY(0px);
+    filter: blur(0px);
+  }
+  100% {
+    transform: translateY(-1px);
+    filter: blur(1px);
+  }
+}
+
+body.burning-active {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><text y="24" font-size="24">🔥</text></svg>') 16 16, auto;
+}

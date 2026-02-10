@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Burning Letters</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <div id="heatLayer" class="heat-hidden"></div>
+    <!-- Start overlay -->
+    <div id="overlay">
+      <h1>Burn Them All.</h1>
+      <p class="hint">Move your mouse to burn the book into ashes.</p>
+      <button id="startButton">Start</button>
+    </div>
+
+    <!-- Main text block -->
+    <div id="textContainer">
+      <div id="textBlock"></div>
+    </div>
+
+    <!-- Ending overlay for Borges text -->
+    <div id="ending" class="hidden">
+      <div class="ending-inner">
+        <div id="borgesText"></div>
+        <p id="signatureText" class="signature"></p>
+        <button id="restartButton" class="hidden">Burn again</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audio (add real files later in /audio folder) -->
+  <audio id="fireSound" loop>
+    <source src="firesound.mp3" type="audio/mpeg" />
+  </audio>
+  <audio id="typeSound">
+    <source src="typing.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
