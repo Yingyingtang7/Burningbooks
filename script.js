@@ -309,13 +309,20 @@ document.addEventListener("mousemove", (e) => {
   handleBurnAtPoint(e.clientX, e.clientY);
 });
 
-document.addEventListener("touchmove", (e) => {
-  const touch = e.touches[0];
-  handleBurnAtPoint(touch.clientX, touch.clientY);
-});
-
 document.addEventListener("touchstart", (e) => {
+  if (!burningActive || endingShown) return;
+  const touch = e.touches[0];
+  if (!touch) return;
   e.preventDefault();
+  handleBurnAtPoint(touch.clientX, touch.clientY);
+}, { passive: false });
+
+document.addEventListener("touchmove", (e) => {
+  if (!burningActive || endingShown) return;
+  const touch = e.touches[0];
+  if (!touch) return;
+  e.preventDefault();
+  handleBurnAtPoint(touch.clientX, touch.clientY);
 }, { passive: false });
 
 // ===============================
