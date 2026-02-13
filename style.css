@@ -242,6 +242,15 @@ body.burning-active {
 }
 
 @media (max-width: 768px) {
+  #ending {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+
   #overlay {
     padding: clamp(16px, 5vw, 28px);
   }
@@ -289,18 +298,23 @@ body.burning-active {
 
   .ending-inner {
     width: min(92vw, 620px);
-    padding: clamp(16px, 4vw, 24px);
+    margin: 0;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   #borgesText {
     font-size: clamp(1.1rem, 4.7vw, 1.35rem);
     line-height: 1.55;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
   }
 
   .signature {
     font-size: clamp(1rem, 4vw, 1.15rem);
-    margin-bottom: 1.25rem;
+    margin-bottom: 0.85rem;
   }
 }
 
