@@ -287,11 +287,11 @@ body.burning-active {
 
   #textBlock {
     width: 90vw;
-    height: 80vh;
+    height: 68vh;
     max-width: none;
     max-height: 100%;
     padding: clamp(1rem, 3.2vw, 1.5rem);
-    font-size: clamp(15px, 4.1vw, 18px);
+    font-size: clamp(14px, 3.7vw, 16px);
     line-height: 1.55;
     overflow: auto;
   }
@@ -339,8 +339,8 @@ body.burning-active {
 
   #textBlock {
     width: 90vw;
-    height: 80vh;
-    font-size: clamp(14px, 4.2vw, 16px);
+    height: 67vh;
+    font-size: clamp(13.5px, 4vw, 15px);
     padding: 1rem;
   }
 
