@@ -243,67 +243,88 @@ body.burning-active {
 
 @media (max-width: 768px) {
   #overlay {
-    padding: 1rem;
+    padding: clamp(16px, 5vw, 28px);
   }
 
   #overlay h1 {
-    font-size: clamp(1.6rem, 8vw, 2.2rem);
+    font-size: clamp(2rem, 8.5vw, 2.8rem);
     line-height: 1.1;
     text-align: center;
+    margin-bottom: 0.75rem;
   }
 
   #overlay .hint {
     text-align: center;
-    max-width: 26ch;
-    font-size: 0.95rem;
+    max-width: 30ch;
+    font-size: 1.05rem;
+    line-height: 1.45;
+    margin-bottom: 1.5rem;
   }
 
   button {
-    font-size: 1rem;
-    padding: 0.55rem 1.25rem;
+    font-size: 1.1rem;
+    padding: 0.75rem 1.7rem;
+    min-height: 48px;
   }
 
   #textContainer {
-    align-items: flex-start;
-    padding: 1rem 0.75rem 1.25rem;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(12px, 4vw, 22px);
   }
 
   #textBlock {
     width: 100%;
     max-width: none;
-    max-height: calc(100dvh - 2.25rem);
-    padding: 1rem;
-    font-size: 12px;
-    line-height: 1.35;
+    height: 100%;
+    max-height: 100%;
+    padding: 1.15rem 1.2rem;
+    font-size: clamp(14px, 3.8vw, 16px);
+    line-height: 1.45;
     overflow: auto;
   }
 
   .ending-inner {
-    width: min(100%, 560px);
-    padding: 1rem;
+    width: min(92vw, 620px);
+    padding: clamp(16px, 4vw, 24px);
   }
 
   #borgesText {
-    font-size: 0.95rem;
-    line-height: 1.45;
+    font-size: clamp(1.05rem, 4.2vw, 1.3rem);
+    line-height: 1.55;
+    margin-bottom: 1rem;
   }
 
   .signature {
-    margin-bottom: 1rem;
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
   }
 }
 
 @media (max-width: 400px) {
   #overlay h1 {
-    font-size: 1.45rem;
+    font-size: clamp(1.8rem, 9vw, 2.2rem);
   }
 
   #overlay .hint {
-    font-size: 0.9rem;
+    font-size: 1rem;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 0.7rem 1.4rem;
+  }
+
+  #textContainer {
+    padding: 10px;
   }
 
   #textBlock {
-    font-size: 11px;
-    padding: 0.9rem;
+    font-size: 14px;
+    padding: 1rem;
+  }
+
+  #borgesText {
+    font-size: 1rem;
   }
 }
