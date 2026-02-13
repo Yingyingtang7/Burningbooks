@@ -284,9 +284,9 @@ body.burning-active {
     min-height: 100svh;
     min-height: 100dvh;
     align-items: center;
-    justify-content: center;
-    padding-top: calc(env(safe-area-inset-top) + 12px);
-    padding-bottom: calc(env(safe-area-inset-bottom) + 12px);
+    justify-content: flex-start;
+    padding-top: 12px;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom));
     padding-left: 10px;
     padding-right: 10px;
   }
@@ -294,9 +294,9 @@ body.burning-active {
   #textBlock {
     width: 90vw;
     max-width: 90vw;
-    height: min(70vh, calc(100svh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 24px));
-    height: min(70vh, calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 24px));
-    max-height: 100%;
+    height: 70vh;
+    max-height: calc(100dvh - 12px - 12px - env(safe-area-inset-bottom));
+    margin-top: 0;
     padding: clamp(6px, 2.2vw, 10px);
     font-size: clamp(14px, 3.7vw, 16px);
     line-height: 1.55;
@@ -343,8 +343,9 @@ body.burning-active {
   #textContainer {
     min-height: 100svh;
     min-height: 100dvh;
-    padding-top: calc(env(safe-area-inset-top) + 10px);
-    padding-bottom: calc(env(safe-area-inset-bottom) + 10px);
+    justify-content: flex-start;
+    padding-top: 12px;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom));
     padding-left: 8px;
     padding-right: 8px;
   }
@@ -352,10 +353,12 @@ body.burning-active {
   #textBlock {
     width: 90vw;
     max-width: 90vw;
-    height: min(70vh, calc(100svh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 20px));
-    height: min(70vh, calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 20px));
+    height: 70vh;
+    max-height: calc(100dvh - 12px - 12px - env(safe-area-inset-bottom));
+    margin-top: 0;
     font-size: clamp(13.5px, 4vw, 15px);
     padding: 8px;
+    overflow: auto;
   }
 
   #borgesText {
