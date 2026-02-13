@@ -280,15 +280,22 @@ body.burning-active {
   }
 
   #textContainer {
+    inset: 0;
+    min-height: 100svh;
+    min-height: 100dvh;
     align-items: center;
     justify-content: center;
-    padding: clamp(10px, 3vw, 20px);
+    padding-top: calc(env(safe-area-inset-top) + 8px);
+    padding-bottom: calc(env(safe-area-inset-bottom) + 8px);
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   #textBlock {
     width: 90vw;
-    height: 68vh;
-    max-width: none;
+    max-width: 90vw;
+    height: calc(100svh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 20px);
+    height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 20px);
     max-height: 100%;
     padding: clamp(1rem, 3.2vw, 1.5rem);
     font-size: clamp(14px, 3.7vw, 16px);
@@ -334,12 +341,19 @@ body.burning-active {
   }
 
   #textContainer {
-    padding: 10px;
+    min-height: 100svh;
+    min-height: 100dvh;
+    padding-top: calc(env(safe-area-inset-top) + 8px);
+    padding-bottom: calc(env(safe-area-inset-bottom) + 8px);
+    padding-left: 8px;
+    padding-right: 8px;
   }
 
   #textBlock {
     width: 90vw;
-    height: 67vh;
+    max-width: 90vw;
+    height: calc(100svh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 16px);
+    height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 16px);
     font-size: clamp(13.5px, 4vw, 15px);
     padding: 1rem;
   }
